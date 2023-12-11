@@ -1,3 +1,6 @@
 class SignUpUseCase {
-    execute() {}
+    execute(CreateUserDTO) {
+        console.log("oi");
+    }
 }
+module.exports = SignUpUseCase;

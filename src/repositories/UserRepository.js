@@ -1,5 +1,7 @@
-export class UserRepository {
-    async getSignUpUSer(userSiginDTO) {}
+class UserRepository {
+    async getSignUpUSer(userSigninDTO) {}
     async saveUser(createUserDTO) {}
     async searchUser(token) {}
 }
+
+module.exports = UserRepository;

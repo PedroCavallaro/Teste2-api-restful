@@ -1,3 +1,4 @@
-export class SignInUseCase {
+class SignInUseCase {
     execute() {}
 }
+module.exports = SignInUseCase;

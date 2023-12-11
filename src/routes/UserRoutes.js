@@ -1,7 +1,9 @@
-function userRoutes(app) {
-    app.get("/", async (req, res) => {
-        res.send("oi");
-    });
-}
+const userRouter = require("express").Router();
+const UserSiginDTO = require("../dtos/UserSignInDTO");
 
-module.exports = userRoutes;
+userRouter.post("/", async (req, res) => {
+    const user = new UserSiginDTO("pedro", "teste");
+    res.json(user);
+});
+
+module.exports = userRouter;

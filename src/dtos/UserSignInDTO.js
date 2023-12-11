@@ -1,4 +1,4 @@
-export class UserSiginDTO {
+class UserSiginDTO {
     email;
     senha;
 
@@ -7,3 +7,5 @@ export class UserSiginDTO {
         this.senha = senha;
     }
 }
+
+module.exports = UserSiginDTO;

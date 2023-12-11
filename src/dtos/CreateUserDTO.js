@@ -1,4 +1,4 @@
-export class CreateUserDTO {
+class CreateUserDTO {
     nome;
     email;
     senha;
@@ -11,3 +11,4 @@ export class CreateUserDTO {
         this.telefones = telefones;
     }
 }
+module.exports = CreateUserDTO;
