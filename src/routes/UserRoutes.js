@@ -1,6 +1,5 @@
 function userRoutes(app) {
-    app.use();
-    app.get("/", (req, res) => {
+    app.get("/", async (req, res) => {
         res.send("oi");
     });
 }
