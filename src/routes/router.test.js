@@ -6,7 +6,8 @@ const TokenService = require('../service/TokenService');
 
 describe('teste das rotas', () => {
     describe('rota de signUp', () => {
-        const signUpRoute = 'http://localhost:3000/user/new';
+        const signUpRoute =
+            'https://teste-backend-pedrocavallaro.vercel.app/user/new';
         it('dados enviados corretamente para o servidor', async () => {
             const validUser = new CreateUserDTO(
                 'Pedro',
@@ -42,7 +43,8 @@ describe('teste das rotas', () => {
         });
     });
     describe('rota de signIn', () => {
-        const signInRoute = 'http://localhost:3000/user/signin';
+        const signInRoute =
+            'https://teste-backend-pedrocavallaro.vercel.app/user/signin';
         it('usuario existir e os dados estiverem corretos', async () => {
             const validUser = new UserSiginDTO('teste@email.com', '123');
             const res = await fetchData(validUser, signInRoute);
@@ -75,7 +77,8 @@ describe('teste das rotas', () => {
         });
     });
     describe('rota de busca', () => {
-        const searchRoute = 'http://localhost:3000/user/search';
+        const searchRoute =
+            'https://teste-backend-pedrocavallaro.vercel.app/user/search';
         it('token valido', async () => {
             const tokeService = new TokenService();
             const userExample = {
