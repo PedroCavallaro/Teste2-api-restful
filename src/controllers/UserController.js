@@ -77,15 +77,15 @@ class UserController {
     async searchUser(req, res) {
         const [type, token] = req.headers.authorization?.split(' ');
 
-        if (type !== 'Bearer') res.status(400).send();
+        if (type !== 'Bearer') return res.status(400).send();
 
         const response = this.#searchUserUseCase.execute(token);
 
         if (typeof response === 'string') {
-            res.status(400).send({ message: response });
+            return res.status(400).send({ message: response });
         }
 
-        res.status(200).send(response);
+        return res.status(200).send(response);
     }
 }
 const userController = new UserController();
