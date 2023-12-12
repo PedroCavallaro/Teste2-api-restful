@@ -2,10 +2,6 @@
     <main>
         <h1>Segundo desafio técnico</h1>
         <p>Pedro Leme Cavallaro</p>
-        <ul>
-            <li>[Deploy](#deploy)</li>
-            <li>[Requisitos](#requisitos)</li>
-        </ul>
         <h3>Desafio</h3>
         <p>
             Desenvolver uma API RESTful para autenticação de usuários, que
@@ -45,7 +41,6 @@
             </ul>
         </div>
         <div>
-            ## deploy
             <h3>Deploy</h3>
             <p>Para o deploy escolhi utilizar a vercel, por não ter custos e ser relativamente fácil de se configurar</p>
             <p>link: <a href="https://teste-backend-pedrocavallaro.vercel.app">https://teste-backend-pedrocavallaro.vercel.app</a></p>
@@ -58,8 +53,7 @@
         </div>
         <div>
             <div>
-                ## requisitos
-                <h3><a id="requisitos"></a></h3>Requisitos 1Requisitos
+                <h3>Requisitos</h3> 
                 <ul>
                     <li>Persistência de dados: Os dados são salvos no MongoDb </li>
                     <li>Sistema de build com gerenciamento de dependências: Sempre que o deploy é feito as dependências são atualizadas por meio de um comando </li>
