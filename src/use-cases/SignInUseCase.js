@@ -26,7 +26,10 @@ class SignInUseCase {
         if (!isEqual) return { passwordIncorrect: true };
 
         const { id, data_criacao, data_atualizacao, ultimo_login } = user;
+
         const token = this.#tokenService.generateToken(user);
+
+        await this.#userRepository.updateUsersLastLogin(id);
 
         return {
             id,

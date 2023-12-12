@@ -29,6 +29,16 @@ class UserRepository {
         }
         return null;
     }
+    async updateUsersLastLogin(id) {
+        const updatedUser = await User.updateOne(
+            { id: id },
+            {
+                $set: { ultimo_login: new Date() },
+            }
+        );
+
+        return updatedUser;
+    }
 }
 
 module.exports = UserRepository;
