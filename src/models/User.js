@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { phoneSchema } = require("./Phone");
+const mongoose = require('mongoose');
+const { phoneSchema } = require('./Phone');
 
 const { Schema } = mongoose;
 
@@ -29,6 +29,6 @@ const userSchema = new Schema({
     token: String,
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

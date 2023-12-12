@@ -1,6 +1,6 @@
-const UserRepository = require("../repositories/UserRepository");
-const PasswordService = require("../service/PasswordService");
-const TokenService = require("../service/TokenService");
+const UserRepository = require('../repositories/UserRepository');
+const PasswordService = require('../service/PasswordService');
+const TokenService = require('../service/TokenService');
 
 class SignInUseCase {
     #userRepository;

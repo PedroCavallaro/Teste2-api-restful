@@ -1,9 +1,9 @@
-const CreateUserDTO = require("../dtos/CreateUserDTO");
-const UserSiginDTO = require("../dtos/UserSignInDTO");
-const SearchUserUseCase = require("../use-cases/SearchUserUseCase");
-const SignInUseCase = require("../use-cases/SignInUseCase");
-const SignUpUseCase = require("../use-cases/SignUpUseCase");
-const { z, ZodError } = require("zod");
+const CreateUserDTO = require('../dtos/CreateUserDTO');
+const UserSiginDTO = require('../dtos/UserSignInDTO');
+const SearchUserUseCase = require('../use-cases/SearchUserUseCase');
+const SignInUseCase = require('../use-cases/SignInUseCase');
+const SignUpUseCase = require('../use-cases/SignUpUseCase');
+const { z } = require('zod');
 
 class UserController {
     #signUpUseCase;
@@ -30,7 +30,7 @@ class UserController {
         const result = schema.safeParse(req.body);
 
         if (!result.success) {
-            return res.status(400).send({ message: "Dados inconsistentes" });
+            return res.status(400).send({ message: 'Dados inconsistentes' });
         }
         const { nome, email, senha, telefones } = result.data;
 
@@ -38,8 +38,8 @@ class UserController {
 
         const user = await this.#signUpUseCase.execute(createUserDTO);
 
-        if (typeof user === "string") {
-            return res.status(400).json({ message: "E-mail já existente" });
+        if (typeof user === 'string') {
+            return res.status(400).json({ message: 'E-mail já existente' });
         }
         return res.status(200).json(user);
     }
@@ -51,7 +51,7 @@ class UserController {
 
         const result = schema.safeParse(req.body);
         if (!result.success) {
-            return res.status(400).send({ message: "Dados inconsistentes" });
+            return res.status(400).send({ message: 'Dados inconsistentes' });
         }
 
         const { email, senha } = result.data;
@@ -62,26 +62,26 @@ class UserController {
 
         if (user.userNotFound) {
             return res.status(400).send({
-                message: "Usuário e/ou senha inválidos",
+                message: 'Usuário e/ou senha inválidos',
             });
         }
 
         if (user.passwordIncorrect) {
             return res.status(401).send({
-                message: "Usuário e/ou senha inválidos",
+                message: 'Usuário e/ou senha inválidos',
             });
         }
 
         return res.status(200).send(user);
     }
     async searchUser(req, res) {
-        const [type, token] = req.headers.authorization?.split(" ");
+        const [type, token] = req.headers.authorization?.split(' ');
 
-        if (type !== "Bearer") res.status(400).send();
+        if (type !== 'Bearer') res.status(400).send();
 
         const response = this.#searchUserUseCase.execute(token);
 
-        if (typeof response === "string") {
+        if (typeof response === 'string') {
             res.status(400).send({ message: response });
         }
 

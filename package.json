@@ -1,6 +1,20 @@
 {
+    "name": "api-restful",
+    "version": "1.0.0",
+    "main": "src/app.js",
+    "keywords": [],
+    "author": "Pedro Cavallaro",
+    "license": "ISC",
+    "description": "Api restful, criada com express",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/PedroCavallaro/Teste2-api-restful",
+        "directory": "src"
+    },
     "scripts": {
-        "dev": "nodemon src/app.js"
+        "build": "npm i && npm run start",
+        "start": "nodemon src/app.js",
+        "test": "jest"
     },
     "dependencies": {
         "bcrypt": "^5.1.1",
@@ -13,6 +27,9 @@
         "zod": "^3.22.4"
     },
     "devDependencies": {
+        "@faker-js/faker": "^8.3.1",
+        "grunt": "^1.6.1",
+        "jest": "^29.7.0",
         "nodemon": "^3.0.2"
     }
 }

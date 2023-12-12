@@ -1,4 +1,4 @@
-const TokenService = require("../service/TokenService");
+const TokenService = require('../service/TokenService');
 
 class SearchUserUseCase {
     #tokenService;

@@ -1,6 +1,6 @@
-var jwt = require("jsonwebtoken");
+var jwt = require('jsonwebtoken');
 class TokenService {
-    #secret = "segredoJWT";
+    #secret = 'segredoJWT';
     generateToken(user) {
         return jwt.sign(
             {
@@ -20,8 +20,8 @@ class TokenService {
 
             return { token: decodedToken };
         } catch (err) {
-            if (err.message === "jwt expired") return "Sessão inválida";
-            if (err.message === "invalid token") return "Não autorizado";
+            if (err.message === 'jwt expired') return 'Sessão inválida';
+            if (err.message === 'invalid token') return 'Não autorizado';
         }
     }
 }

@@ -1,10 +1,10 @@
-const CreateUserDTO = require("../dtos/CreateUserDTO");
-const User = require("../models/User");
-const { v4: uuidv4 } = require("uuid");
+const CreateUserDTO = require('../dtos/CreateUserDTO');
+const User = require('../models/User');
+const { v4: uuidv4 } = require('uuid');
 
 class UserRepository {
     async getSignInUSer(email) {
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email: email });
 
         return user;
     }

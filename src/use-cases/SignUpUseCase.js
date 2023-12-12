@@ -1,6 +1,6 @@
-const UserRepository = require("../repositories/UserRepository");
-const PasswordService = require("../service/PasswordService");
-const TokenService = require("../service/TokenService");
+const UserRepository = require('../repositories/UserRepository');
+const PasswordService = require('../service/PasswordService');
+const TokenService = require('../service/TokenService');
 
 class SignUpUseCase {
     #userRepository;
@@ -20,7 +20,7 @@ class SignUpUseCase {
 
         const user = await this.#userRepository.saveUser(createUserDTO);
 
-        if (!user) return "E-mail ja existente";
+        if (!user) return 'E-mail ja existente';
 
         const token = this.#tokenService.generateToken(user);
 
