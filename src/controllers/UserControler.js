@@ -13,10 +13,31 @@ class UserController {
     }
 
     async signUp(req, res) {
-        return this.#signUpUseCase.execute(req.body);
+        const user = await this.#signUpUseCase.execute(req.body);
+
+        if (user) {
+            return res.status(200).json(user);
+        }
+
+        return res.status(400).json({ message: "E-mail já existente" });
     }
     async signIn(req, res) {
-        return this.#signInUseCase.execute(req.body);
+        const user = await this.#signInUseCase.execute(req.body);
+        // if (user.userNotFound) {
+        //     res.status(400).send({
+        //         message: "Usuário e/ou senha inválidos",
+        //     });
+        // }
+
+        // if (user.passwordIncorrect) {
+        //     res.status(401).send({
+        //         message: "Usuário e/ou senha inválidos",
+        //     });
+        // }
+
+        res.status(200).send(user);
+
+        return;
     }
     async searchUser(req, res) {
         return this.#searchUserUseCase.execute(req.body);

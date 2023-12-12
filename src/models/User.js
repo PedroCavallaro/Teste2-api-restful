@@ -4,6 +4,10 @@ const { phoneSchema } = require("./Phone");
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
+    id: {
+        type: String,
+        required: true,
+    },
     nome: {
         type: String,
         required: true,

@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 
 const phoneSchema = new Schema({
     numero: {
-        type: Number,
+        type: String,
         required: true,
     },
     ddd: {
-        type: Number,
+        type: String,
         required: true,
     },
 });
