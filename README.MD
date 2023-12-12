@@ -74,8 +74,6 @@
                     <li>Criptografia hash na senha e token: Criptografia foi feita por meio da biblioteca bcrypt</li>
                 </ul>
             </div>
-
         </div>
     </main>
-
 </body>
