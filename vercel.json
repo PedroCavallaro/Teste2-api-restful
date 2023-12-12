@@ -1,7 +1,6 @@
 {
     "name": "teste-backend",
-    "version": 1,
+    "version": 3,
     "public": true,
-
     "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
 }
