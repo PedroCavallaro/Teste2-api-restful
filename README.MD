@@ -2,6 +2,7 @@
     <main>
         <h1>Segundo desafio técnico</h1>
         <p>Pedro Leme Cavallaro</p>
+        <p>Deploy:</p>
         <h4>Desafio</h4>
         <p>
             Desenvolver uma API RESTful para autenticação de usuários, que
@@ -39,6 +40,9 @@
                 <li>grunt</li>
                 <li>faker</li>
             </ul>
+        </div>
+        <div>
+            <h2>Endpoints:</h2>
         </div>
     </main>
 </body>
