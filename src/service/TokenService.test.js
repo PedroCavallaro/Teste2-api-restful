@@ -35,4 +35,12 @@ describe('verificação do token', () => {
 
         expect(isValid === 'Não autorizado').toBe(true);
     });
+    it('token expirado', () => {
+        const expiredToken =
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyOTI3OTRmLWE5MzItNDg5Mi1iYzQ3LTVjMWUwZjAyMGI1ZiIsIm5vbWUiOiJQZWRybyIsImVtYWlsIjoidGVzdGVAZW1haWwuY29tIiwiaWF0IjoxNzAyNDExMjY2LCJleHAiOjE3MDI0MTMwNjZ9.llB82RuprTqZc1o2c4tvWsFBrlJllGXTqCZQHqdPUSc';
+
+        const isValid = tokenService.verifyToken(expiredToken);
+
+        expect(isValid === 'Sessão inválida').toBe(true);
+    });
 });

@@ -1,11 +1,17 @@
-const SignInUseCase = require('./SignInUseCase');
+const SignUpUseCase = require('./SignUpUseCase');
+const conn = require('../db/conn');
+const { fakerDE: faker } = require('@faker-js/faker');
 
 describe('criação de um usuário', () => {
-    const sinUp = new SignInUseCase();
+    beforeAll(() => {
+        conn();
+    });
+
+    const sinUp = new SignUpUseCase();
     it('sucesso caso o usuario nao existir', async () => {
         const userTeste = {
             nome: 'Pedro',
-            email: 'email@email.com',
+            email: faker.internet.email(),
             senha: '123',
             telefones: [
                 {
@@ -34,6 +40,6 @@ describe('criação de um usuário', () => {
 
         const user = await sinUp.execute(userTeste2);
 
-        expect(user.hasOwnProperty('token')).toBeFalse();
+        expect(user === 'E-mail ja existente').toBeTruthy();
     });
 });
