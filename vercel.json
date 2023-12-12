@@ -2,13 +2,6 @@
     "name": "teste-backend",
     "version": 1,
     "public": true,
-    "build": {
-        "use": "@vercel/node"
-    },
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "src/app.js"
-        }
-    ]
+
+    "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
 }
