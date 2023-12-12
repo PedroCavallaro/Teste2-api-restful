@@ -1,6 +1,9 @@
+const CreateUserDTO = require("../dtos/CreateUserDTO");
+const UserSiginDTO = require("../dtos/UserSignInDTO");
 const SearchUserUseCase = require("../use-cases/SearchUserUseCase");
 const SignInUseCase = require("../use-cases/SignInUseCase");
 const SignUpUseCase = require("../use-cases/SignUpUseCase");
+const { z, ZodError } = require("zod");
 
 class UserController {
     #signUpUseCase;
@@ -13,34 +16,76 @@ class UserController {
     }
 
     async signUp(req, res) {
-        const user = await this.#signUpUseCase.execute(req.body);
+        const schema = z.object({
+            nome: z.string(),
+            email: z.string().email(),
+            senha: z.string(),
+            telefones: z.array(
+                z.object({
+                    numero: z.string(),
+                    ddd: z.string(),
+                })
+            ),
+        });
+        const result = schema.safeParse(req.body);
 
-        if (user) {
-            return res.status(200).json(user);
+        if (!result.success) {
+            return res.status(400).send({ message: "Dados inconsistentes" });
         }
+        const { nome, email, senha, telefones } = result.data;
 
-        return res.status(400).json({ message: "E-mail já existente" });
+        const createUserDTO = new CreateUserDTO(nome, email, senha, telefones);
+
+        const user = await this.#signUpUseCase.execute(createUserDTO);
+
+        if (typeof user === "string") {
+            return res.status(400).json({ message: "E-mail já existente" });
+        }
+        return res.status(200).json(user);
     }
     async signIn(req, res) {
-        const user = await this.#signInUseCase.execute(req.body);
-        // if (user.userNotFound) {
-        //     res.status(400).send({
-        //         message: "Usuário e/ou senha inválidos",
-        //     });
-        // }
+        const schema = z.object({
+            email: z.string().email(),
+            senha: z.string(),
+        });
 
-        // if (user.passwordIncorrect) {
-        //     res.status(401).send({
-        //         message: "Usuário e/ou senha inválidos",
-        //     });
-        // }
+        const result = schema.safeParse(req.body);
+        if (!result.success) {
+            return res.status(400).send({ message: "Dados inconsistentes" });
+        }
 
-        res.status(200).send(user);
+        const { email, senha } = result.data;
 
-        return;
+        const userSignInDTO = new UserSiginDTO(email, senha);
+
+        const user = await this.#signInUseCase.execute(userSignInDTO);
+
+        if (user.userNotFound) {
+            return res.status(400).send({
+                message: "Usuário e/ou senha inválidos",
+            });
+        }
+
+        if (user.passwordIncorrect) {
+            return res.status(401).send({
+                message: "Usuário e/ou senha inválidos",
+            });
+        }
+
+        return res.status(200).send(user);
     }
     async searchUser(req, res) {
-        return this.#searchUserUseCase.execute(req.body);
+        const [type, token] = req.headers.authorization?.split(" ");
+
+        if (type !== "Bearer") res.status(400).send();
+
+        const response = this.#searchUserUseCase.execute(token);
+
+        if (typeof response === "string") {
+            res.status(400).send({ message: response });
+        }
+
+        res.status(200).send(response);
     }
 }
 const userController = new UserController();

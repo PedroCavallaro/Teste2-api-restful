@@ -20,7 +20,7 @@ class SignUpUseCase {
 
         const user = await this.#userRepository.saveUser(createUserDTO);
 
-        if (!user) return null;
+        if (!user) return "E-mail ja existente";
 
         const token = this.#tokenService.generateToken(user);
 

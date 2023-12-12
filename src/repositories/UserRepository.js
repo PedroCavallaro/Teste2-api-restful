@@ -29,7 +29,6 @@ class UserRepository {
         }
         return null;
     }
-    async searchUser(token) {}
 }
 
 module.exports = UserRepository;
