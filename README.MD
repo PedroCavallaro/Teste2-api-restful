@@ -59,7 +59,7 @@
                     <li>Sistema de build com gerenciamento de dependências: Sempre que o deploy é feito as dependências são atualizadas por meio de um comando </li>
                     <li>Task runner para build: Foi utilizado o Grunt, para minimizar o código</li>
                     <li>Padronização de estilo (ex: jsHint/jsLint): Foi utilizado Eslint junto com Prettierc</li>
-                    <li>Framework: Express, Hapi, ou similar: Foi utilizado o frameword Express</li>
+                    <li>Framework: Express, Hapi, ou similar: Foi utilizado o framework Express</li>
                 </ul>
             </div>
             <div>
@@ -69,7 +69,7 @@
                         JWT como token: Utilizado a biblioteca jsonwebtoken para a geração do token
                     </li>
                     <li>
-                         Testes unitáriosÇ Testes unitários foram realizado por meio da biblioteca jest
+                         Testes unitários: Testes unitários foram realizado por meio da biblioteca jest
                     </li>
                     <li>Criptografia hash na senha e token: Criptografia foi feita por meio da biblioteca bcrypt</li>
                 </ul>
